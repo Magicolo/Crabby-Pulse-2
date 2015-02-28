@@ -5,18 +5,25 @@ using Magicolo;
 
 public class AudioManager : MonoBehaviourExtended {
 
+	[Range(1, 4)] public int currentController = 1;
+	
 	void Awake() {
 		PureData.OpenPatch("main");
 	}
 	
 	void Update() {
-		float xAxis1 = Input.GetAxisRaw("Horizontal");
-		float yAxis1 = Input.GetAxisRaw("Vertical");
-		float zAxis1 = 0;
+		float xAxis = Input.GetAxisRaw("Horizontal");
+		float yAxis = Input.GetAxisRaw("Vertical");
+		float zAxis = 0;
 		bool trigger = Input.GetKey(KeyCode.JoystickButton0);
-		PureData.Send("x_axis1", xAxis1);
-		PureData.Send("y_axis1", yAxis1);
-		PureData.Send("z_axis1", zAxis1);
-		PureData.Send("trigger1", trigger);
+		
+		SendInput(currentController, xAxis, yAxis, zAxis, trigger);
+	}
+	
+	public static void SendInput(int controllerIndex, float xAxis, float yAxis, float zAxis, bool trigger) {
+		PureData.Send("x_axis" + controllerIndex, xAxis);
+		PureData.Send("y_axis" + controllerIndex, yAxis);
+		PureData.Send("z_axis" + controllerIndex, zAxis);
+		PureData.Send("trigger" + controllerIndex, trigger);
 	}
 }
