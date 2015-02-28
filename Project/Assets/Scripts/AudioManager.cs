@@ -15,12 +15,12 @@ public class AudioManager : MonoBehaviourExtended {
 		float xAxis = Input.GetAxisRaw("Horizontal");
 		float yAxis = Input.GetAxisRaw("Vertical");
 		float zAxis = 0;
-		bool trigger = Input.GetKey(KeyCode.JoystickButton0);
+		float trigger = Input.GetKey(KeyCode.JoystickButton0).GetHashCode();
 		
 		SendInput(currentController, xAxis, yAxis, zAxis, trigger);
 	}
 	
-	public static void SendInput(int controllerIndex, float xAxis, float yAxis, float zAxis, bool trigger) {
+	public static void SendInput(int controllerIndex, float xAxis, float yAxis, float zAxis, float trigger) {
 		PureData.Send("x_axis" + controllerIndex, xAxis);
 		PureData.Send("y_axis" + controllerIndex, yAxis);
 		PureData.Send("z_axis" + controllerIndex, zAxis);
