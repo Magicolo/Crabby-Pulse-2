@@ -7,9 +7,11 @@ public class AudioManagerWithMove : MonoBehaviourExtended {
 	
 	// We save a list of Move controllers.
 	private List<UniMoveController> moves = new List<UniMoveController>();
-
+	[Range(1, 4)] public int currentController = 1;
+	float currentXAxis;
+	
 	void Awake() {
-		
+		PureData.OpenPatch("main");
 		int count = UniMoveController.GetNumConnected();
 		for (int i = 0; i < count; i++)
 		{
@@ -46,7 +48,6 @@ public class AudioManagerWithMove : MonoBehaviourExtended {
 			}
 			
 		}
-		PureData.OpenPatch("main");
 	}
 	
 	void Update() {
@@ -69,11 +70,24 @@ public class AudioManagerWithMove : MonoBehaviourExtended {
 				move.SetLED(Color.black);
 			}
 		}
-		float xAxis = Input.GetAxisRaw("Horizontal");
-		float yAxis = Input.GetAxisRaw("Vertical");
-		bool trigger = Input.GetButtonDown("Fire1");
-		PureData.Send("x_axis", xAxis);
-		PureData.Send("y_axis", yAxis);
-		PureData.Send("trigger", trigger);
+
+			
+		
+
+		
+		currentXAxis = Mathf.Lerp(currentXAxis, moves[0].Acceleration.z, Time.deltaTime * 5);
+		float yAxis = moves[0].Acceleration.y;
+		float zAxis = 0;
+		float trigger = moves[0].Trigger;
+		Debug.Log (trigger);
+		
+			SendInput(currentController, currentXAxis, yAxis, zAxis, trigger);
+		
+	}
+		public static void SendInput(int controllerIndex, float xAxis, float yAxis, float zAxis, float trigger) {
+		PureData.Send("x_axis" + controllerIndex, xAxis);
+		PureData.Send("y_axis" + controllerIndex, yAxis);
+		PureData.Send("z_axis" + controllerIndex, zAxis);
+		PureData.Send("trigger" + controllerIndex, trigger);
 	}
 }	
