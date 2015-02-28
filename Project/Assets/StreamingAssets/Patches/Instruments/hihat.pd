@@ -1,0 +1,27 @@
+#N canvas 749 297 547 304 10;
+#X declare -path ../Data -path ../Effects -path ../Misc -path ../Signal
+-path ../Sources -path ../Unity;
+#X obj 22 271 outlet~ left;
+#X obj 102 271 outlet~ right;
+#X obj 22 13 declare -path ../Data -path ../Effects -path ../Misc -path
+../Signal -path ../Sources -path ../Unity;
+#X obj 22 46 inlet patterns;
+#X obj 286 46 inlet messages;
+#X obj 286 66 route Play Stop Step Sleep;
+#X obj 22 131 noise~;
+#X obj 22 152 ADSR~ 10 50;
+#X obj 22 66 sel 0;
+#X obj 85 112 t b f;
+#X msg 112 132 10 \$1;
+#X obj 22 173 *~ 0.1;
+#X text 21 -7 Input: Decay (ms);
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 11 0;
+#X connect 8 1 9 0;
+#X connect 9 0 7 1;
+#X connect 9 1 10 0;
+#X connect 10 0 7 1;
+#X connect 11 0 0 0;
+#X connect 11 0 1 0;

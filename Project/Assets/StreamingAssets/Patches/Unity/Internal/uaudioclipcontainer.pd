@@ -1,0 +1,4 @@
+#N canvas 200 300 450 300 10;
+#X obj 0 0 uaudioclip button 1;
+#X obj 0 0 uaudioclip health 1;
+#X obj 0 0 uaudioclip Hit 1;
