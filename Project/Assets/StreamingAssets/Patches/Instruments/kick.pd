@@ -20,11 +20,11 @@
 #X obj 112 137 vline~;
 #X obj 112 196 triangle~;
 #X msg 112 117 2000 0 \, 80 5;
-#X obj 22 236 *~ 0.75;
 #X text 21 -8 Input: Decay (ms);
+#X obj 22 236 *~ 0.15;
 #X connect 3 0 7 0;
 #X connect 4 0 5 0;
-#X connect 6 0 16 0;
+#X connect 6 0 17 0;
 #X connect 7 1 8 0;
 #X connect 8 0 6 1;
 #X connect 8 0 12 0;
@@ -37,5 +37,5 @@
 #X connect 13 0 14 0;
 #X connect 14 0 6 0;
 #X connect 15 0 13 0;
-#X connect 16 0 0 0;
-#X connect 16 0 1 0;
+#X connect 17 0 0 0;
+#X connect 17 0 1 0;
