@@ -17,6 +17,6 @@ public class AudioManager : MonoBehaviourExtended {
 		PureData.Send("x_axis1", xAxis1);
 		PureData.Send("y_axis1", yAxis1);
 		PureData.Send("z_axis1", zAxis1);
-		PureData.Send("trigger", trigger);
+		PureData.Send("trigger1", trigger);
 	}
 }
