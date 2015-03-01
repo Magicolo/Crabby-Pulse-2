@@ -12,6 +12,15 @@
 #X declare -path ../Data -path ../Effects -path ../Misc -path ../Signal
 -path ../Sources -path ../Unity;
 #X declare -path ../Signal;
+#X declare -path ../Signal;
+#X declare -path ../Data -path ../Effects -path ../Misc -path ../Signal
+-path ../Sources -path ../Unity;
+#X declare -path ../Data -path ../Effects -path ../Misc -path ../Signal
+-path ../Sources -path ../Unity;
+#X declare -path ../Data -path ../Effects -path ../Misc -path ../Signal
+-path ../Sources -path ../Unity;
+#X declare -path ../Data -path ../Effects -path ../Misc -path ../Signal
+-path ../Sources -path ../Unity;
 #X declare -path Data -path Effects -path Misc -path Signal -path Sources
 -path Unity -path Instruments;
 #X declare -path ../Signal;
@@ -159,6 +168,64 @@
 #X connect 35 0 28 0;
 #X connect 35 1 29 0;
 #X restore 22 45 pd tank;
+#N canvas 132 164 763 384 support 1;
+#X obj 23 129 pad;
+#X obj 20 29 r x_axis3;
+#X obj 90 29 r y_axis3;
+#X obj 490 29 r trigger3;
+#X obj 24 325 *~;
+#X obj 490 50 change;
+#X obj 490 71 sel 0;
+#X obj 490 92 f;
+#X obj 515 92 + 1;
+#X obj 515 113 % 4;
+#X obj 58 309 line~;
+#X msg 58 289 \$1 100;
+#X obj 53 129 pad;
+#X obj 83 129 pad;
+#X obj 113 129 pad;
+#X obj 490 133 sel 0 1 2 3;
+#X obj 23 230 spigot;
+#X msg 88 230 1;
+#X msg 65 230 0;
+#X obj 113 230 spigot;
+#X msg 178 230 1;
+#X msg 155 230 0;
+#X obj 213 230 spigot;
+#X msg 278 230 1;
+#X msg 255 230 0;
+#X obj 313 230 spigot;
+#X msg 378 230 1;
+#X msg 355 230 0;
+#X connect 3 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 0 15 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 1;
+#X connect 10 0 4 1;
+#X connect 11 0 10 0;
+#X connect 15 0 17 0;
+#X connect 15 0 21 0;
+#X connect 15 0 24 0;
+#X connect 15 0 27 0;
+#X connect 15 1 18 0;
+#X connect 15 1 20 0;
+#X connect 15 2 18 0;
+#X connect 15 2 23 0;
+#X connect 15 2 27 0;
+#X connect 15 2 21 0;
+#X connect 15 3 18 0;
+#X connect 17 0 16 1;
+#X connect 18 0 16 1;
+#X connect 20 0 19 1;
+#X connect 21 0 19 1;
+#X connect 23 0 22 1;
+#X connect 24 0 22 1;
+#X connect 26 0 25 1;
+#X connect 27 0 25 1;
+#X restore 22 68 pd support;
 #X restore 371 13 pd instruments;
 #X obj 22 13 declare -path Data -path Effects -path Misc -path Signal
 -path Sources -path Unity -path Instruments;
