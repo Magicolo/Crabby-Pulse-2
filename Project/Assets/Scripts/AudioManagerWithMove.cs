@@ -8,10 +8,11 @@ public class AudioManagerWithMove : MonoBehaviourExtended {
 	// We save a list of Move controllers.
 	private List<UniMoveController> moves = new List<UniMoveController>();
 	[Range(1, 4)] public int currentController = 1;
-	float currentXAxis;
+	public float currentXAxis;
+	public float currentYAxis;
+	public float smooth = 5;
 	
 	void Awake() {
-		PureData.OpenPatch("main");
 		int count = UniMoveController.GetNumConnected();
 		for (int i = 0; i < count; i++)
 		{
@@ -22,7 +23,7 @@ public class AudioManagerWithMove : MonoBehaviourExtended {
 			if (!move.Init(i))
 			{
 				Destroy(move);	// If it failed to initialize, destroy and continue on
-				continue;
+				//continue;
 			}
 
 
@@ -74,16 +75,19 @@ public class AudioManagerWithMove : MonoBehaviourExtended {
 			
 		
 
-		
-		currentXAxis = Mathf.Lerp(currentXAxis, moves[0].Acceleration.z, Time.deltaTime * 5);
-		float yAxis = moves[0].Acceleration.y;
+		for(int i=0; i<moves.Count;i++)
+		{
+		currentXAxis =  moves[i].Acceleration.z;
+		currentYAxis =  moves[i].Acceleration.y;	
 		float zAxis = 0;
-		float trigger = moves[0].Trigger;
-		Debug.Log (trigger);
-		
-			SendInput(currentController, currentXAxis, yAxis, zAxis, trigger);
-		
+		float trigger = moves[i	].Trigger;
+		SendInput( i+1 , currentXAxis, currentYAxis, zAxis, trigger);}
+		}
+	
+	void OnGUI(){
+		GUILayout.Label(currentXAxis + "x" +currentYAxis +"y");
 	}
+	
 		public static void SendInput(int controllerIndex, float xAxis, float yAxis, float zAxis, float trigger) {
 		PureData.Send("x_axis" + controllerIndex, xAxis);
 		PureData.Send("y_axis" + controllerIndex, yAxis);
