@@ -29,13 +29,20 @@ public class ControllerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		float hue = Mathf.Clamp01(Mathf.Abs(Mathf.Lerp (currentYAxis,controller.Acceleration.y,Time.deltaTime*5)));
-		playerColor = HSVtoRGB(hue,1,1,1);
-		controller.SetLED(playerColor);
-		currentXAxis =  controller.Acceleration.z;
+		//float hue = Mathf.Clamp01(Mathf.Abs(Mathf.Lerp (currentYAxis,controller.Acceleration.y,Time.deltaTime*5)));
+		//playerColor = HSVtoRGB(hue,1,1,1);
+		
+		currentXAxis =  controller.Acceleration.x;
 		currentYAxis =  controller.Acceleration.y;	
 		float zAxis = 0;
 		float trigger = controller.Trigger;
+		float r = Mathf.Clamp01((currentXAxis+1)/2);
+		float b = Mathf.Clamp01((controller.Acceleration.x+1)/2);
+		float g = 1f;
+		Color colour1 = HSVtoRGB(0f, 1f, trigger, trigger);
+		Color colour2 = HSVtoRGB(0.5f, 1f, trigger, trigger);
+		playerColor =Color.Lerp(colour1, colour2, (currentYAxis + 1) / 2);
+		controller.SetLED(playerColor);
 		SendInput( instrumentNum, currentXAxis, currentYAxis, zAxis, trigger);
 		
 	}
