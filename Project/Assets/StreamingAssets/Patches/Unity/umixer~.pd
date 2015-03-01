@@ -24,7 +24,13 @@
 #X obj 330 110 Internal/ubus~ Support;
 #X obj 330 130 outlet~ Support_left;
 #X obj 393 130 outlet~ Support_right;
-#X obj 440 130 outlet;
+#X symbolatom 440 0 10 0 0 0 - ubus_receiveNameJungler ubus_sendNameJungler;
+#X msg 440 70 symbol Jungler;
+#X obj 440 90 s ubus_receiveNameJungler;
+#X obj 440 110 Internal/ubus~ Jungler;
+#X obj 440 130 outlet~ Jungler_left;
+#X obj 503 130 outlet~ Jungler_right;
+#X obj 550 130 outlet;
 #X connect 0 0 2 0;
 #X connect 2 0 3 0;
 #X connect 4 0 5 0;
@@ -41,4 +47,8 @@
 #X connect 20 0 21 0;
 #X connect 22 0 23 0;
 #X connect 22 1 24 0;
-#X coords 0 -1 1 1 448 19 2 0 0;
+#X connect 0 0 26 0;
+#X connect 26 0 27 0;
+#X connect 28 0 29 0;
+#X connect 28 1 30 0;
+#X coords 0 -1 1 1 558 19 2 0 0;
