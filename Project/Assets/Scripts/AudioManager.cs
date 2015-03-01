@@ -6,7 +6,7 @@ using Magicolo;
 public class AudioManager : MonoBehaviourExtended {
 
 	public Vector3 currentAxis;
-	[Range(1, 4)] public int currentController = 1;
+	[Range(1, 6)] public int currentController = 1;
 	
 	void Awake() {
 		PureData.OpenPatch("main");
