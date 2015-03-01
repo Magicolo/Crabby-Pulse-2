@@ -5,6 +5,7 @@ using Magicolo;
 
 public class AudioManager : MonoBehaviourExtended {
 
+	public Vector3 currentAxis;
 	[Range(1, 4)] public int currentController = 1;
 	
 	void Awake() {
@@ -12,12 +13,9 @@ public class AudioManager : MonoBehaviourExtended {
 	}
 	
 	void Update() {
-		float xAxis = Input.GetAxisRaw("Horizontal");
-		float yAxis = Input.GetAxisRaw("Vertical");
-		float zAxis = 0;
-		float trigger = Input.GetKey(KeyCode.JoystickButton0).GetHashCode();
+		currentAxis = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), Input.GetKey(KeyCode.JoystickButton0).GetHashCode());
 		
-		SendInput(currentController, xAxis, yAxis, zAxis, trigger);
+		SendInput(currentController, currentAxis.x, currentAxis.y, 0, currentAxis.z);
 	}
 	
 	public static void SendInput(int controllerIndex, float xAxis, float yAxis, float zAxis, float trigger) {

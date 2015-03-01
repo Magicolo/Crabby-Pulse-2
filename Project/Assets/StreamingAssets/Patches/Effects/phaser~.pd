@@ -1,4 +1,4 @@
-#N canvas 1018 600 345 286 10;
+#N canvas 260 104 345 286 10;
 #X declare -path ../Signal;
 #X obj 13 7 declare -path ../Signal;
 #X obj 39 90 rpole~;

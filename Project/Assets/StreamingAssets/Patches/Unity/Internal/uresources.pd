@@ -1,4 +1,4 @@
-#N canvas 394 524 393 327 10;
+#N canvas 258 124 393 327 10;
 #X declare -path ../../Data -path ../../Effects -path ../../Misc -path
 ../../Signal -path ../../Sources -path ../../Unity;
 #X obj -5 -43 declare -path ../../Data -path ../../Effects -path ../../Misc
@@ -13,7 +13,6 @@
 #X obj 106 235 dac~;
 #X obj 243 65 switch~;
 #X obj 243 46 r uresources_switch;
-#X obj 106 216 adc~;
 #N canvas 572 169 603 126 uresources_messagedelayer 0;
 #X obj 12 92 s;
 #X obj 12 54 pipe f s 0;
@@ -57,7 +56,5 @@
 #X connect 6 0 8 1;
 #X connect 7 0 8 0;
 #X connect 10 0 9 0;
-#X connect 11 0 8 0;
-#X connect 11 1 8 1;
-#X connect 13 0 6 0;
-#X connect 14 0 7 0;
+#X connect 12 0 6 0;
+#X connect 13 0 7 0;
