@@ -31,7 +31,7 @@
 #X obj 73 96 t f b;
 #X msg 335 207 1;
 #X msg 306 228 \$1 500;
-#N canvas 259 203 867 364 osc12 1;
+#N canvas 259 203 867 364 osc12 0;
 #X obj 24 121 inlet~;
 #X obj 24 259 outlet~;
 #X obj 343 178 *~ 1.01;
@@ -159,7 +159,7 @@
 #X obj 22 245 *~ 0.02;
 #X obj 122 245 *~ 0.02;
 #X obj 167 94 randomrange 0 0.025 5;
-#X obj 22 113 + 36;
+#X obj 22 113 + 42;
 #X connect 3 0 7 0;
 #X connect 4 0 5 0;
 #X connect 7 0 8 0;
